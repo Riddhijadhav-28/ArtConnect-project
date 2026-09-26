@@ -1,0 +1,193 @@
+.edit-artist-page {
+    min-height: 100vh;
+    background: #fff9f0;
+    color: #17324d;
+    padding: 70px 20px 90px;
+}
+
+.edit-artist-container {
+    max-width: 850px;
+    margin: 0 auto;
+}
+
+.edit-artist-header {
+    text-align: center;
+    margin-bottom: 45px;
+}
+
+.edit-artist-header p {
+    color: #3f78b5;
+    font-size: 13px;
+    font-weight: 700;
+    letter-spacing: 2px;
+    margin-bottom: 10px;
+}
+
+.edit-artist-header h1 {
+    color: #17324d;
+    font-size: 42px;
+    font-weight: 800;
+    margin-bottom: 12px;
+}
+
+.edit-artist-header span {
+    color: #61717d;
+    font-size: 16px;
+}
+
+.edit-artist-card {
+    background: #fffdf9;
+    border: 1px solid #d9e8ed;
+    border-radius: 24px;
+    padding: 40px;
+    box-shadow: 0 15px 35px rgba(23, 50, 77, 0.08);
+}
+
+.edit-artist-field {
+    margin-bottom: 24px;
+}
+
+.edit-artist-field label {
+    display: block;
+    color: #17324d;
+    font-size: 15px;
+    font-weight: 700;
+    margin-bottom: 8px;
+}
+
+.edit-artist-field input,
+.edit-artist-field textarea {
+    width: 100%;
+    box-sizing: border-box;
+    border: 1px solid #cbdde3;
+    background: #fff;
+    color: #17324d;
+    border-radius: 12px;
+    padding: 13px 15px;
+    font-size: 15px;
+    outline: none;
+    transition: all 0.25s ease;
+}
+
+.edit-artist-field input:focus,
+.edit-artist-field textarea:focus {
+    border-color: #3f78b5;
+    box-shadow: 0 0 0 3px rgba(63, 120, 181, 0.12);
+}
+
+.edit-artist-field textarea {
+    min-height: 130px;
+    resize: vertical;
+}
+
+.edit-artist-field input::placeholder,
+.edit-artist-field textarea::placeholder {
+    color: #9aa7af;
+}
+
+.edit-artist-field small {
+    display: block;
+    color: #7a8790;
+    font-size: 13px;
+    margin-top: 7px;
+}
+
+.edit-artist-error {
+    background: #fff0ed;
+    border: 1px solid #e6b9b0;
+    color: #a33a2b;
+    padding: 13px 16px;
+    border-radius: 12px;
+    margin-bottom: 25px;
+    font-weight: 600;
+}
+
+.edit-artist-success {
+    background: #e7f4ea;
+    border: 1px solid #b8d8bf;
+    color: #28643a;
+    padding: 13px 16px;
+    border-radius: 12px;
+    margin-bottom: 25px;
+    font-weight: 600;
+}
+
+.edit-artist-buttons {
+    display: flex;
+    gap: 15px;
+    margin-top: 30px;
+}
+
+.edit-artist-save,
+.edit-artist-cancel {
+    border: none;
+    padding: 13px 25px;
+    border-radius: 30px;
+    font-size: 15px;
+    font-weight: 700;
+    cursor: pointer;
+    transition: all 0.25s ease;
+}
+
+.edit-artist-save {
+    background: #3f78b5;
+    color: white;
+}
+
+.edit-artist-save:hover {
+    background: #17324d;
+    transform: translateY(-2px);
+    box-shadow: 0 8px 18px rgba(23, 50, 77, 0.15);
+}
+
+.edit-artist-save:disabled {
+    opacity: 0.7;
+    cursor: not-allowed;
+    transform: none;
+}
+
+.edit-artist-cancel {
+    background: #f1e8dc;
+    color: #17324d;
+}
+
+.edit-artist-cancel:hover {
+    background: #e6d8c8;
+    transform: translateY(-2px);
+}
+
+.edit-artist-loading {
+    text-align: center;
+    padding-top: 120px;
+    color: #61717d;
+    font-size: 18px;
+}
+
+@media (max-width: 600px) {
+
+    .edit-artist-page {
+        padding: 50px 15px 70px;
+    }
+
+    .edit-artist-header h1 {
+        font-size: 34px;
+    }
+
+    .edit-artist-header span {
+        font-size: 15px;
+    }
+
+    .edit-artist-card {
+        padding: 25px 20px;
+        border-radius: 18px;
+    }
+
+    .edit-artist-buttons {
+        flex-direction: column;
+    }
+
+    .edit-artist-save,
+    .edit-artist-cancel {
+        width: 100%;
+    }
+}

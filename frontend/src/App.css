@@ -1,0 +1,21 @@
+.form-error{
+    background: #fbeaea;
+    border: 1px solid #e8bcbc;
+    color: #a84d4d;
+    padding: 12px 15px;
+    font-size: 14px;
+    border-radius: 12px;
+    font-weight: 600;
+    margin-bottom: 20px;
+}
+
+.form-success{
+    background: #e8f3ed;
+    border: 1px solid #b9d8c5;
+    color: #4d8065;
+    padding: 12px 15px;
+    border-radius: 12px;
+    font-size: 14px;
+    font-weight: 600;
+    margin-bottom: 20px;
+}

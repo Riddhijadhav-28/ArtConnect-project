@@ -1,0 +1,170 @@
+.commission-page{
+    background: #fff9f3;
+    min-height: 100vh;
+    padding: 70px 20px 90px;
+}
+
+.commission-container{
+    width: 90%;
+    max-width: 750px;
+    margin: 0 auto;
+}
+
+/*heading*/
+.commission-heading{
+    text-align: center;
+    margin-bottom: 40px;
+}
+
+.commission-heading p{
+    color: #2f80c0;
+    font-size: 12px;
+    font-weight: 700;
+    letter-spacing: 2px;
+    margin-bottom: 10px;
+}
+
+.commission-heading h1{
+    color: #123b6d;
+    font-size: 44px;
+    font-weight: 800;
+    margin-bottom: 12px;
+}
+
+.commission-heading span{
+    display: block;
+    color: #64748b;
+    font-size: 16px;
+    line-height: 1.6;
+}
+
+/*form*/
+.commission-form{
+    background: #ffffff;
+    padding: 40px;
+    border-radius: 25px;
+    border: 1px solid #d8e8ef;
+    box-shadow: 0 15px 40px rgba(18, 59, 109, 0.08);
+}
+
+.form-group{
+    margin-bottom: 25px;
+}
+
+.form-group label{
+    display: block;
+    color: #123b6d;
+    font-weight: 700;
+    margin-bottom: 8px;
+}
+
+.form-group input, .form-group textarea{
+    width: 100%;
+    box-sizing: border-box;
+    border: 1px solid #cbdde6;
+    border-radius: 12px;
+    padding: 13px 15px;
+    color: #1f2937;
+    background: #fffdf9;
+    font-size: 15px;
+    outline: none;
+    transition: all 0.25s ease;
+}
+
+.form-group textarea{
+    resize: vertical;
+}
+
+.form-group input:focus, .form-group textarea:focus{
+    border-color: #2f80c0;
+    box-shadow: 0 0 0 3px rgba(47, 128, 192, 0.12);
+}
+
+/*budget daedline*/
+.commission-row{
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: 20px;
+}
+
+.budget-input{
+    position: relative;
+}
+
+.budget-input span{
+    position: absolute;
+    left: 15px;
+    top: 50%;
+    transform: translateY(-50%);
+    color: #123b6d;
+    font-weight: 700;
+}
+
+.budget-input input{
+    padding-left: 35px;
+}
+
+/*note*/
+.commission-note{
+    background: #fff4ec;
+    border-left: 4px solid #f6b48f;
+    padding: 15px 18px;
+    border-radius: 10px;
+    margin-bottom: 25px;
+}
+
+.commission-note strong{
+    color: #123b6d;
+}
+
+.commission-note p{
+    color: #64748b;
+    font-size: 14px;
+    margin: 5px 0 0;
+    line-height: 1.5;
+}
+
+/*button*/
+.send-request-btn{
+    width: 100%;
+    border: none;
+    border-radius: 28px;
+    padding: 14px 25px;
+    background: #2f80c0;
+    color: white;
+    font-size: 16px;
+    font-weight: 700;
+    cursor: pointer;
+    transition: all 0.25s ease;
+}
+
+.send-request-btn:hover{
+    background: #123b6d;
+    transform: translateY(-2px);
+    box-shadow: 0 10px 20px rgba(18, 59, 109, 0.18);
+}
+
+/*mobile*/
+@media (max-width: 600px){
+    .commission-page{
+        padding: 45px 15px 70px;
+    }
+
+    .commission-container{
+        width: 100%;
+    }
+
+    .commission-heading h1{
+        font-size: 34px;
+    }
+
+    .commission-form{
+        padding: 25px 20px;
+        border-radius: 20px;
+    }
+
+    .commission-row{
+        grid-template-columns: 1fr;
+        gap: 0;
+    }
+}

@@ -1,0 +1,255 @@
+.my-requests-page{
+    min-height: 100vh;
+    background: #fff9f3;
+    padding: 70px 20px 90px;
+}
+
+.requests-container{
+    width: 90%;
+    max-width: 1150px;
+    margin: 0 auto;
+}
+
+/*header*/
+.requests-header{
+    text-align: center;
+    margin-bottom: 45px;
+}
+
+.requests-header p{
+    color: #2f80c0;
+    font-size: 12px;
+    font-weight: 700;
+    letter-spacing: 2px;
+    margin-bottom: 10px;
+}
+
+.requests-header h1{
+    color: #123b6d;
+    font-size: 46px;
+    font-weight: 800;
+    margin-bottom: 12px;
+}
+
+.requests-header span{
+    color: #64748b;
+    font-size: 16px;
+}
+
+/*statistics*/
+.request-stats{
+    display: grid;
+    grid-template-columns: repeat(5,1fr);
+    gap: 15px;
+    margin-bottom: 55px;
+}
+
+.request-stat-card{
+    background: #ffffff;
+    border: 1px solid #d8e8ef;
+    border-radius: 18px;
+    padding: 22px 15px;
+    text-align: center;
+    transition: 0.25s ease;
+}
+
+.request-stat-card:hover{
+    transform: translateY(-4px);
+    box-shadow: 0 10px 25px rgba(18, 69, 109,0.08);
+}
+
+.stat-number{
+    display: block;
+    color: #123b6d;
+    font-size: 30px;
+    font-weight: 800;
+}
+
+.stat-label{
+    display: block;
+    color: #64748b;
+    font-size: 14px;
+    margin-top: 3px;
+}
+
+/*small status accents*/
+.request-stat-card.pending{
+    border-top: 4px solid #f6b48f;
+}
+
+.request-stat-card.accepted{
+    border-top: 4px solid #2f80c0;
+}
+
+.request-stat-card.rejected{
+    border-top: 4px solid #d47777;
+}
+
+.request-stat-card.completed{
+    border-top: 4px solid #78a890;
+}
+
+
+/*request section*/
+.requests-section h2{
+    color: #123b6d;
+    font-size: 28px;
+    font-weight: 800;
+    margin-bottom: 25px;
+}
+
+.requests-list{
+    display: flex;
+    flex-direction: column;
+    gap: 20px;
+}
+
+/*request card*/
+.request-card{
+    background: #ffffff;
+    border: 1px solid #d8e8ef;
+    border-radius: 20px;
+    padding: 25px 30px;
+    transition: 0.25s ease;
+}
+
+.request-card:hover{
+    transform: translateY(-3px);
+    box-shadow: 0 12px 30px rgba(18, 59, 109, 0.09);
+}
+
+/*card top*/
+.request-card-top{
+    display: flex;
+    justify-content: space-between;
+    align-items: flex-start;
+    gap: 20px;
+}
+
+.request-card h3{
+    color: #123b6d;
+    font-size: 22px;
+    font-weight: 750;
+    margin-bottom: 6px;
+}
+
+.request-artist{
+    color: #64748b;
+    font-size: 14px;
+    margin: 0;
+}
+
+.request-artist strong{
+    color: #2f80c0;
+}
+
+/*status*/
+.request.status{
+    padding: 6px 14px;
+    border-radius: 20px;
+    font-size: 12px;
+    font-weight: 700;
+    white-space: nowrap;
+}
+
+.status-pending{
+    background: #fff1e8;
+    color: #c26d3d;
+}
+
+.status-accepted{
+    background: #e6f4fb;
+    color: #216d9e;
+}
+
+.status-rejected{
+    background: #fbeaea;
+    color: #a84d4d;
+}
+
+.status-completed{
+    background: #e8f3ed;
+    color: #4d8065;
+}
+
+/*description*/
+.request-description{
+    color: #64748b;
+    line-height: 1.6;
+    margin: 20px 0;
+}
+
+/*details*/
+.request-details{
+    display: flex;
+    gap: 45px;
+    border-top: 1px solid #edf2f5;
+    padding-top: 18px;
+}
+
+.request-details span{
+    display: block;
+    color: #94a3b8;
+    font-size: 12px;
+    margin-bottom: 4px;
+}
+
+.request-details strong{
+    color: #123b6d;
+    font-size: 15px;
+}
+
+/*review button*/
+.review-request-btn{
+    margin-top: 22px;
+    border: none;
+    background: #f6b48f;
+    color: #123b6d;
+    padding: 10px 20px;
+    font-weight: 700;
+    cursor: pointer;
+    transition: 0.25s ease;
+}
+
+.review-request-btn:hover{
+    background: #2f80c0;
+    color: white;
+    transform: translateY(-2px);
+}
+
+@media (max-width: 900px){
+    .request-stats{
+        grid-template-columns: repeat(3, 1fr);
+    }
+}
+
+@media (max-width: 600px){
+    .my-requests-page{
+        padding: 45px 15px 70px;
+    }
+
+    .requests-container{
+        width: 100%;
+    }
+
+    .requests-header h1{
+        font-size: 35px;
+    }
+
+    .request-stats{
+        grid-template-columns: repeat(2,1fr);
+    }
+
+    .request-card{
+        padding: 22px 20px;
+    }
+
+    .request-card-top{
+        flex-direction: column;
+        gap: 12px;
+    }
+
+    .request-details{
+        gap: 30px;
+    }
+}

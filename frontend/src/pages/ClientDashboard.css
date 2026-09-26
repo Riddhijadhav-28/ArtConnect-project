@@ -1,0 +1,310 @@
+.client-dashboard-page{
+    min-height: 100vh;
+    background: #fff9f3;
+    padding: 65px 20px 90px;
+}
+
+.client-dashboard-container{
+    width: 90%;
+    max-width: 1200px;
+    margin: 0 auto;
+}
+
+/* Header */
+.client-dashboard-header{
+    margin-bottom: 45px;
+}
+
+.client-dashboard-header p{
+    color: #2f80c0;
+    font-size: 12px;
+    font-weight: 700;
+    letter-spacing: 2px;
+    margin-bottom: 8px;
+}
+
+.client-dashboard-header h1{
+    color: #123b6d;
+    font-size: 44px;
+    font-weight: 800;
+    margin-bottom: 10px;
+}
+
+.client-dashboard-header span{
+    color: #64748b;
+    font-size: 16px;
+}
+
+/* Statistics */
+.client-stats{
+    display: grid;
+    grid-template-columns: repeat(5, 1fr);
+    gap: 16px;
+    margin-bottom: 60px;
+}
+
+.client-stat-card{
+    background: #ffffff;
+    border: 1px solid #d8e8ef;
+    border-radius: 18px;
+    padding: 22px 15px;
+    text-align: center;
+    transition: 0.25s ease;
+}
+
+.client-stat-card:hover{
+    transform: translateY(-4px);
+    box-shadow: 0 10px 25px rgba(18, 59, 109, 0.12);
+}
+
+.client-stat-number{
+    display: block;
+    color: #123b6d;
+    font-size: 29px;
+    font-weight: 800;
+}
+
+.client-stat-label{
+    display: block;
+    color: #64748b;
+    font-size: 13px;
+    margin-top: 4px;
+}
+
+/* Statistic accents */
+
+.total-stat{
+    border-top: 4px solid #2f80c0;
+}
+
+.pending-stat{
+    border-top: 4px solid #f6b48f;
+}
+
+.accepted-stat{
+    border-top: 4px solid #2f80c0;
+}
+
+.completed-stat{
+    border-top: 4px solid #78a890;
+}
+
+.rejected-stat{
+    border-top: 4px solid #d47777;
+}
+
+/* Commission heading */
+.client-commissions-heading{
+    display: flex;
+    align-items: flex-end;
+    justify-content: space-between;
+    margin-bottom: 25px;
+}
+
+.client-commissions-heading p{
+    color: #2f80c0;
+    font-size: 11px;
+    font-weight: 700;
+    letter-spacing: 2px;
+    margin-bottom: 5px;
+}
+
+.client-commissions-heading h2{
+    color: #123b6d;
+    font-size: 29px;
+    font-weight: 800;
+    margin: 0;
+}
+
+.client-commissions-heading > span{
+    color: #64748b;
+    font-size: 14px;
+}
+
+/* Commission list */
+.client-commission-list{
+    display: flex;
+    flex-direction: column;
+    gap: 20px;
+}
+
+/* Commission card */
+.client-commission-card{
+    background: #ffffff;
+    border: 1px solid #d8e8ef;
+    border-radius: 20px;
+    padding: 27px 30px;
+    transition: 0.25s ease;
+}
+
+.client-commission-card:hover{
+    transform: translateY(-3px);
+    box-shadow: 0 12px 30px rgba(18, 59, 109, 0.09);
+}
+
+/* Card header */
+.client-commission-header{
+    display: flex;
+    justify-content: space-between;
+    align-items: flex-start;
+    gap: 20px;
+}
+
+.client-commission-header h3{
+    color: #123b6d;
+    font-size: 22px;
+    font-weight: 750;
+    margin-bottom: 5px;
+}
+
+.client-artist-name{
+    color: #64748b;
+    font-size: 13px;
+    margin: 0;
+}
+
+.client-artist-name strong{
+    color: #2f80c0;
+}
+
+/* Status */
+.client-commission-status{
+    padding: 6px 14px;
+    border-radius: 20px;
+    font-size: 12px;
+    font-weight: 700;
+    white-space: nowrap;
+}
+
+.status-pending{
+    background: #fff1e8;
+    color: #c26d3d;
+}
+
+.status-accepted{
+    background: #e6f4fb;
+    color: #216d9e;
+}
+
+.status-rejected{
+    background: #fbeaea;
+    color: #a84d4d;
+}
+
+.status-completed{
+    background: #e8f3ed;
+    color: #4d8065;
+}
+
+/* Description */
+.client-commission-description{
+    color: #64748b;
+    line-height: 1.6;
+    margin: 20px 0;
+}
+
+/* Information */
+.client-commission-info{
+    display: flex;
+    gap: 50px;
+    border-top: 1px solid #edf2f5;
+    padding-top: 17px;
+}
+
+.client-commission-info span{
+    display: block;
+    color: #94a3b8;
+    font-size: 12px;
+    margin-bottom: 4px;
+}
+
+.client-commission-info strong{
+    color: #123b6d;
+    font-size: 15px;
+}
+
+/* Empty state */
+.no-client-commissions{
+    background: #ffffff;
+    border: 1px dashed #b9d8e7;
+    border-radius: 20px;
+    text-align: center;
+    padding: 55px 20px;
+}
+
+.client-empty-icon{
+    width: 55px;
+    height: 55px;
+    margin: 0 auto 15px;
+    border-radius: 50%;
+    background: #d9eef7;
+    color: #2f80c0;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    font-size: 27px;
+    font-weight: 400;
+}
+
+.no-client-commissions h3{
+    color: #123b6d;
+    margin-bottom: 8px;
+}
+
+.no-client-commissions p{
+    color: #64748b;
+    max-width: 500px;
+    margin: 0 auto;
+    line-height: 1.6;
+}
+
+.client-stat-icon{
+    font-size: 24px;
+    margin-bottom: 8px;
+}
+
+@media (max-width: 1000px){
+
+    .client-stats{
+        grid-template-columns: repeat(3, 1fr);
+    }
+
+}
+
+@media (max-width: 600px){
+
+    .client-dashboard-page{
+        padding: 45px 15px 70px;
+    }
+
+    .client-dashboard-container{
+        width: 100%;
+    }
+
+    .client-dashboard-header h1{
+        font-size: 35px;
+    }
+
+    .client-stats{
+        grid-template-columns: repeat(2, 1fr);
+    }
+
+    .client-commissions-heading{
+        align-items: flex-start;
+        flex-direction: column;
+        gap: 8px;
+    }
+
+    .client-commission-header{
+        flex-direction: column;
+        gap: 12px;
+    }
+
+    .client-commission-card{
+        padding: 22px 20px;
+    }
+
+    .client-commission-info{
+        gap: 30px;
+    }
+}

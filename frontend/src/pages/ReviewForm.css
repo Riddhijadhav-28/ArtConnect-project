@@ -1,0 +1,132 @@
+.review-page{
+    min-height: 100vh;
+    background: #fff9f3;
+    padding: 70px 20px 90px;
+}
+
+.review-container{
+    width: 90%;
+    max-width: 750px;
+    margin: 0 auto;
+}
+
+/* Header */
+.review-header{
+    text-align: center;
+    margin-bottom: 40px;
+}
+
+.review-header p{
+    color: #2f80c0;
+    font-size: 12px;
+    font-weight: 700;
+    letter-spacing: 2px;
+    margin-bottom: 10px;
+}
+
+.review-header h1{
+    color: #123b6d;
+    font-size: 44px;
+    font-weight: 800;
+    margin-bottom: 12px;
+}
+
+.review-header span{
+    color: #64748b;
+    font-size: 16px;
+}
+
+/* Card */
+.review-card{
+    background: #ffffff;
+    border: 1px solid #d8e8ef;
+    border-radius: 24px;
+    padding: 35px;
+    box-shadow: 0 10px 30px rgba(18, 59, 109, 0.06);
+}
+
+/* Fields */
+.review-field{
+    margin-bottom: 25px;
+}
+
+.review-field label{
+    display: block;
+    color: #123b6d;
+    font-size: 15px;
+    font-weight: 700;
+    margin-bottom: 8px;
+}
+
+.review-field select,
+.review-field textarea{
+    width: 100%;
+    border: 1px solid #cbdde6;
+    border-radius: 12px;
+    padding: 12px 14px;
+    color: #334155;
+    background: #fff;
+    font-size: 15px;
+    outline: none;
+    transition: 0.25s ease;
+}
+
+.review-field textarea{
+    resize: vertical;
+    min-height: 130px;
+}
+
+.review-field select:focus,
+.review-field textarea:focus{
+    border-color: #2f80c0;
+    box-shadow: 0 0 0 3px rgba(47, 128, 192, 0.12);
+}
+
+.review-field textarea::placeholder{
+    color: #94a3b8;
+}
+
+/* Submit */
+
+.submit-review-btn{
+    width: 100%;
+    border: none;
+    background: #2f80c0;
+    color: white;
+    padding: 13px 22px;
+    border-radius: 25px;
+    font-size: 15px;
+    font-weight: 700;
+    cursor: pointer;
+    transition: 0.25s ease;
+}
+
+.submit-review-btn:hover{
+    background: #123b6d;
+    transform: translateY(-2px);
+    box-shadow: 0 8px 18px rgba(18, 59, 109, 0.18);
+}
+
+/* Mobile */
+@media (max-width: 600px){
+    .review-page{
+        padding: 45px 15px 70px;
+    }
+
+    .review-container{
+        width: 100%;
+    }
+
+    .review-header h1{
+        font-size: 35px;
+    }
+
+    .review-header span{
+        font-size: 15px;
+    }
+
+    .review-card{
+        padding: 25px 20px;
+        border-radius: 20px;
+    }
+}

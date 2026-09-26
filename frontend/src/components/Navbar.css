@@ -1,0 +1,127 @@
+.art-navbar {
+    background: #FFF9F0;
+    border-bottom: 1px solid #D9E8ED;
+    padding: 14px 0;
+    position: relative;
+    z-index: 1000;
+}
+
+/* Brand */
+.art-navbar .navbar-brand {
+    color: #243B53;
+    font-size: 27px;
+    font-weight: 800;
+    letter-spacing: -0.7px;
+}
+
+.art-navbar .navbar-brand:hover {
+    color: #3F6F91;
+}
+
+/* Navigation links */
+.art-navbar .nav-link {
+    color: #4A5968;
+    font-weight: 500;
+    margin: 0 5px;
+    padding: 8px 13px !important;
+    border-radius: 20px;
+    transition: all 0.25s ease;
+}
+
+.art-navbar .nav-link:hover {
+    color: #3F6F91;
+    background: #E8F3F6;
+}
+
+.art-navbar .nav-link.active {
+    color: #3F6F91;
+    background: #E8F3F6;
+}
+
+/* Dashboard */
+.art-dashboard-link {
+    color: #3F6F91 !important;
+    font-weight: 700 !important;
+}
+
+/* Profile */
+.art-profile-link {
+    border: 1px solid #C8DCE3;
+}
+
+/* Logout */
+.art-logout {
+    border: none;
+    background: #3F6F91;
+    color: white;
+    padding: 9px 20px;
+    border-radius: 24px;
+    font-weight: 600;
+    margin-left: 8px;
+    transition: 0.25s ease;
+}
+
+.art-logout:hover {
+    background: #243B53;
+    transform: translateY(-2px);
+}
+
+/* Login */
+.art-login {
+    color: #3F6F91 !important;
+    font-weight: 600 !important;
+}
+
+/* Register */
+.art-register {
+    display: inline-block;
+    background: #3F6F91;
+    color: white !important;
+    padding: 9px 20px !important;
+    border-radius: 24px;
+    font-weight: 600;
+    margin-left: 8px;
+    transition: all 0.25s ease;
+}
+
+.art-register:hover {
+    background: #243B53;
+    color: white !important;
+    transform: translateY(-2px);
+}
+
+/* Navbar toggler */
+.art-navbar .navbar-toggler {
+    border: 1px solid #AFCBD7;
+    display: none;
+}
+
+.art-navbar .navbar-toggler:focus {
+    box-shadow: 0 0 0 2px rgba(141, 48, 72, 0.15);
+}
+
+/* Mobile */
+@media (max-width: 991px) {
+    .art-navbar .navbar-toggler{
+        display: block;
+    }
+
+    .art-navbar .navbar-collapse {
+        padding-top: 15px;
+    }
+
+    .art-navbar .nav-link {
+        margin: 3px 0;
+    }
+
+    .art-logout {
+        margin-left: 0;
+        margin-top: 8px;
+    }
+
+    .art-register {
+        display: inline-block;
+        margin-left: 0;
+        margin-top: 5px;
+    }
+}
