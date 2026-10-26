@@ -10,7 +10,7 @@ ArtConnect allows artists to showcase their artwork through personalized profile
 
 - User registration and login
 - Role-based access for Artists and Clients
-- Artist profile creation and management
+- Artist profile creation and management    
 - Artwork upload and management
 - Browse and explore artists
 - Commission request system

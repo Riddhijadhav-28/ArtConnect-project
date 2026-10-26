@@ -483,7 +483,8 @@ function ArtistDashboard() {
                                             <div className="commission-card-header">
                                                 <div>
                                                     <h3>{commission.title}</h3>
-                                                    <p className="client-name"><i className="bi bi-person me-1"></i>From a client</p>
+                                                    <p className="client-name"><i className="bi bi-person me-1"></i>{commission.client?.name || "Client name unavailable"}</p>
+                                                    <p className="client-email"><i className="bi bi-envelope me-1"></i>{commission.client?.email || "Client email unavailable"}</p>
                                                 </div>
 
                                                 <span className={`commission-status status-${commission.status?.toLowerCase()}`}>

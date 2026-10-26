@@ -60,7 +60,8 @@ export const getArtistDashboard = async(req,res) =>{
 
         const recentCommissions = await Commission.find({
             artist: artist._id
-        }).sort({ createdAt: -1 }).limit(5);
+        }).populate("client", "name email")
+        .sort({ createdAt: -1 }).limit(5);
 
         const recentReviews = await Review.find({
             artist: artist._id
