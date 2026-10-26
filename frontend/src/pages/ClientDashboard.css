@@ -308,3 +308,34 @@
         gap: 30px;
     }
 }
+
+.client-invoices-button {
+    display: inline-flex;
+    align-items: center;
+    justify-content: center;
+    padding: 12px 20px;
+    background-color: #2f80c0;
+    color: #ffffff;
+    text-decoration: none;
+    border-radius: 10px;
+    font-weight: 600;
+    white-space: nowrap;
+    transition: background-color 0.2s ease, transform 0.2s ease;
+}
+
+.client-invoices-button:hover {
+    background-color: #123b6d;
+    color: #ffffff;
+    transform: translateY(-2px);
+}
+
+@media (max-width: 600px) {
+    .client-dashboard-header {
+        flex-wrap: wrap;
+        gap: 16px;
+    }
+
+    .client-invoices-button {
+        width: 100%;
+    }
+}

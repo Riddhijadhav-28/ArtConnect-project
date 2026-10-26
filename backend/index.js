@@ -14,7 +14,7 @@ import artworkRoute from "./routes/artworkRoute.js";
 import commissionRoute from "./routes/commissionRoute.js";
 import reviewRoute from "./routes/reviewRoute.js";
 import dashboardRoute from "./routes/dashboardRoute.js";
-
+import invoiceRoute from "./routes/invoiceRoute.js"
 // configDotenv();
 
 connectDB();
@@ -30,6 +30,7 @@ app.use("/api/auth", authRoute);
 app.use("/api/artists", artistRoute);
 app.use("/api/artworks", artworkRoute);
 app.use("/api/commissions", commissionRoute);
+app.use("/api/invoices", invoiceRoute);
 app.use("/api/reviews", reviewRoute);
 app.use("/api/dashboard", dashboardRoute);
 

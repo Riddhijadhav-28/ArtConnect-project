@@ -16,6 +16,7 @@ import Review from "./pages/ReviewForm";
 import Profile from "./pages/Profile";
 import CreateArtistProfile from "./pages/CreateArtist";
 import EditArtistProfile from "./pages/EditArtistProfile";
+import ClientInvoices from "./pages/ClientInvoices";
 
 function App(){
   return(
@@ -40,6 +41,7 @@ function App(){
       <Route path="/profile" element={<ProtectedRoute><Profile /></ProtectedRoute>} />
       <Route path="/create-artist-profile" element={ <ProtectedRoute><CreateArtistProfile></CreateArtistProfile></ProtectedRoute>}/>
       <Route path="/edit-artist-profile" element={<ProtectedRoute allowedRoles={["artist"]}><EditArtistProfile></EditArtistProfile></ProtectedRoute>}></Route>
+      <Route path="/client-invoices" element={<ClientInvoices />} />
     </Routes>
     </>
   );

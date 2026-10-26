@@ -22,6 +22,17 @@ function ArtistDashboard() {
     const [deletingArtwork, setDeletingArtwork] = useState(null);
     const [deleteArtworkConfirm, setDeleteArtworkConfirm] = useState(null);
 
+
+    const [invoices, setInvoices] = useState([]);
+    const [showInvoiceForm, setShowInvoiceForm] = useState(null);
+    const [selectedInvoice, setSelectedInvoice] = useState(null);
+
+    const [invoiceForm, setInvoiceForm] = useState({
+        amount: "",
+        dueDate: ""
+    });
+
+const [invoiceLoading, setInvoiceLoading] = useState(false);
     // =========================
     // FETCH DASHBOARD
     // =========================
@@ -97,6 +108,7 @@ function ArtistDashboard() {
         }
     };
 
+    
     // =========================
     // INITIAL LOAD
     // =========================
@@ -105,10 +117,34 @@ function ArtistDashboard() {
             await Promise.all([
                 fetchDashboard(),
                 fetchArtworks(),
+                fetchInvoices()
             ]);
         };
         loadDashboard();
     }, []);
+
+    // FETCH ARTIST INVOICES
+const fetchInvoices = async () => {
+    try {
+        const token = localStorage.getItem("token");
+
+        const response = await axios.get(
+            "http://localhost:3000/api/invoices/artist",
+            {
+                headers: {
+                    Authorization: `Bearer ${token}`
+                }
+            }
+        );
+
+        setInvoices(response.data.invoices || []);
+    } catch (error) {
+        console.error(
+            "Unable to fetch invoices:",
+            error.response?.data || error.message
+        );
+    }
+};
 
     // =========================
     // SUCCESS MESSAGE TIMER
@@ -242,6 +278,96 @@ function ArtistDashboard() {
         setDeletingArtwork(null);
     }
 };
+
+// GENERATE INVOICE
+const generateInvoice = async (commission) => {
+try {
+setInvoiceLoading(true);
+setSuccessMessage("");
+setErrorMessage("");
+
+    const token = localStorage.getItem("token");
+
+    await axios.post(
+        "http://localhost:3000/api/invoices",
+        {
+            commissionId: commission._id,
+            amount: Number(invoiceForm.amount),
+            dueDate: invoiceForm.dueDate
+        },
+        {
+            headers: {
+                Authorization: `Bearer ${token}`
+            }
+        }
+    );
+
+    await fetchInvoices();
+
+    setShowInvoiceForm(null);
+
+    setInvoiceForm({
+        amount: "",
+        dueDate: ""
+    });
+
+    setSuccessMessage("Invoice generated successfully!");
+} catch (error) {
+    console.error("Generate Invoice Error:", error);
+    console.error("Backend Response:", error.response?.data);
+
+    setErrorMessage(
+        error.response?.data?.message ||
+        error.message ||
+        "Unable to generate invoice."
+    );
+} finally {
+    setInvoiceLoading(false);
+}
+
+};
+
+
+// MARK INVOICE AS PAID
+const markInvoicePaid = async (invoiceId) => {
+    try {
+        setInvoiceLoading(true);
+        setSuccessMessage("");
+        setErrorMessage("");
+
+        const token = localStorage.getItem("token");
+
+        await axios.patch(
+            `http://localhost:3000/api/invoices/${invoiceId}/paid`,
+            {},
+            {
+                headers: {
+                    Authorization: `Bearer ${token}`
+                }
+            }
+        );
+
+        await fetchInvoices();
+
+        setSelectedInvoice(null);
+        setSuccessMessage("Invoice marked as paid successfully!");
+    } catch (error) {
+        setErrorMessage(
+            error.response?.data?.message ||
+            "Unable to update invoice payment status."
+        );
+    } finally {
+        setInvoiceLoading(false);
+    }
+};
+
+
+// PRINT OR SAVE INVOICE AS PDF
+const printInvoice = () => {
+    window.print();
+};
+
+
 
     // =========================
     // LOADING
@@ -501,6 +627,62 @@ function ArtistDashboard() {
                                                     )}
                                                     {commission.status}
                                                 </span>
+
+                                                {/* INVOICE SECTION */}
+
+{commission.status === "Accepted" && (() => {
+    const invoice = invoices.find(
+        (item) =>
+            item.commission === commission._id ||
+            item.commission?._id === commission._id
+    );
+
+    return (
+        <div className="invoice-actions">
+
+            {!invoice ? (
+                <button
+                    className="generate-invoice-btn"
+                    onClick={() => {
+                        setInvoiceForm({
+                            amount: String(commission.budget || ""),
+                            dueDate: commission.deadline
+                                ? new Date(commission.deadline)
+                                    .toISOString()
+                                    .split("T")[0]
+                                : "",
+                            paymentMethod: "UPI"
+                        });
+
+                        setShowInvoiceForm(commission);
+                    }}
+                >
+                    <i className="bi bi-receipt me-1"></i>
+                    Generate Invoice
+                </button>
+            ) : (
+                <>
+                    <span className={`invoice-status ${
+                        invoice.paymentStatus === "Paid"
+                            ? "invoice-paid"
+                            : "invoice-unpaid"
+                    }`}>
+                        Payment: {invoice.paymentStatus}
+                    </span>
+
+                    <button
+                        className="view-invoice-btn"
+                        onClick={() => setSelectedInvoice(invoice)}
+                    >
+                        <i className="bi bi-eye me-1"></i>
+                        View Invoice
+                    </button>
+                </>
+            )}
+
+        </div>
+    );
+})()}
                                             </div>
 
                                             <p className="commission-description">{commission.description}</p>
@@ -622,6 +804,191 @@ function ArtistDashboard() {
                     deletingArtwork === deleteArtworkConfirm?._id
                 }
             />
+            {/* GENERATE INVOICE FORM */}
+
+{showInvoiceForm && (
+    <div className="invoice-modal-overlay">
+        <div className="invoice-modal">
+
+            <h2>Generate Invoice</h2>
+
+            <p>
+                Commission: <strong>{showInvoiceForm.title}</strong>
+            </p>
+
+            <form
+                onSubmit={(event) => {
+                    event.preventDefault();
+                    generateInvoice(showInvoiceForm);
+                }}
+            >
+                <label>Agreed Amount (₹)</label>
+
+                <input
+                    type="number"
+                    min="0.01"
+                    step="0.01"
+                    required
+                    value={invoiceForm.amount}
+                    onChange={(event) =>
+                        setInvoiceForm({
+                            ...invoiceForm,
+                            amount: event.target.value
+                        })
+                    }
+                />
+
+                <label>Payment Due Date</label>
+
+                <input
+                    type="date"
+                    required
+                    min={new Date().toISOString().split("T")[0]}
+                    value={invoiceForm.dueDate}
+                    onChange={(event) =>
+                        setInvoiceForm({
+                            ...invoiceForm,
+                            dueDate: event.target.value
+                        })
+                    }
+                />
+
+                
+
+                <div className="invoice-modal-actions">
+
+                    <button
+                        type="submit"
+                        disabled={invoiceLoading}
+                    >
+                        {invoiceLoading
+                            ? "Generating..."
+                            : "Generate Invoice"}
+                    </button>
+
+                    <button
+                        type="button"
+                        onClick={() => setShowInvoiceForm(null)}
+                    >
+                        Cancel
+                    </button>
+
+                </div>
+            </form>
+
+        </div>
+    </div>
+)}
+
+
+{/* VIEW INVOICE */}
+
+{selectedInvoice && (
+    <div className="invoice-modal-overlay">
+        <div className="invoice-modal invoice-print-area">
+
+            <div className="invoice-document">
+
+                <h2>ArtConnect</h2>
+                <h3>INVOICE</h3>
+
+                <hr />
+
+                <p>
+                    <strong>Invoice Number:</strong>{" "}
+                    {selectedInvoice.invoiceNumber}
+                </p>
+
+                <p>
+                    <strong>Issue Date:</strong>{" "}
+                    {new Date(
+                        selectedInvoice.issueDate
+                    ).toLocaleDateString("en-IN")}
+                </p>
+
+                <p>
+                    <strong>Due Date:</strong>{" "}
+                    {new Date(
+                        selectedInvoice.dueDate
+                    ).toLocaleDateString("en-IN")}
+                </p>
+
+                <hr />
+
+                <p>
+                    <strong>Commission:</strong>{" "}
+                    {selectedInvoice.commissionTitle}
+                </p>
+
+                <p>
+                    <strong>Description:</strong>{" "}
+                    {selectedInvoice.description || "No description provided"}
+                </p>
+
+                <h3>
+                    Amount Due: ₹
+                    {Number(selectedInvoice.amount).toLocaleString("en-IN")}
+                </h3>
+
+                <p>
+                    <strong>Payment Method:</strong>{" "}
+                    {selectedInvoice.paymentMethod}
+                </p>
+
+                <p>
+                    <strong>Payment Status:</strong>{" "}
+                    {selectedInvoice.paymentStatus}
+                </p>
+
+                {selectedInvoice.paymentStatus === "Paid" && (
+                    <p>
+                        <strong>Paid On:</strong>{" "}
+                        {selectedInvoice.paidAt
+                            ? new Date(
+                                selectedInvoice.paidAt
+                            ).toLocaleDateString("en-IN")
+                            : "Confirmed"}
+                    </p>
+                )}
+
+                <p className="invoice-note">
+                    Payment is to be made directly to the artist using
+                    the agreed offline payment method.
+                </p>
+
+            </div>
+
+            <div className="invoice-modal-actions no-print">
+
+                <button onClick={printInvoice}>
+                    <i className="bi bi-printer me-1"></i>
+                    Print / Save PDF
+                </button>
+
+                {selectedInvoice.paymentStatus === "Unpaid" && (
+                    <button
+                        disabled={invoiceLoading}
+                        onClick={() =>
+                            markInvoicePaid(selectedInvoice._id)
+                        }
+                    >
+                        {invoiceLoading
+                            ? "Updating..."
+                            : "Mark as Paid"}
+                    </button>
+                )}
+
+                <button
+                    onClick={() => setSelectedInvoice(null)}
+                >
+                    Close
+                </button>
+
+            </div>
+
+        </div>
+    </div>
+)}
         </div>
     );
 }

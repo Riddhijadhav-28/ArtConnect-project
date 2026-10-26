@@ -1,4 +1,5 @@
 import { useEffect, useState } from "react";
+import { Link } from "react-router-dom";
 import axios from "axios";
 import "./ClientDashboard.css";
 
@@ -33,12 +34,16 @@ function ClientDashboard(){
         <div className="client-dashboard-page">
             <div className="client-dashboard-container">
                 <div className="client-dashboard-header">
-                    <div>
-                        <p><i className="bi bi-palette me-2"></i>YOUR CREATIVE JOURNEY</p>
-                        <h1><i className="bi bi-grid-1x2 me-2"></i>Client Dashboard</h1>
-                        <span>Track your commission requests and follow your creative projects.</span>
-                    </div>
-                </div>
+    <div>
+        <p><i className="bi bi-palette me-2"></i>YOUR CREATIVE JOURNEY</p>
+        <h1><i className="bi bi-grid-1x2 me-2"></i>Client Dashboard</h1>
+        <span>Track your commission requests and follow your creative projects.</span>
+    </div><Link to="/client-invoices" className="client-invoices-button">
+    <i className="bi bi-receipt me-2"></i>
+    My Invoices
+</Link>
+
+</div>
 
                 <div className="client-stats">
                     <div className="client-stat-card total-stat">

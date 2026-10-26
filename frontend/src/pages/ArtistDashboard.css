@@ -819,3 +819,403 @@
         transform: translateY(0);
     }
 }
+
+/* ========================================
+ARTCONNECT INVOICE FUNCTIONALITY
+======================================== */
+
+/* Invoice buttons and payment status */
+
+.invoice-actions {
+display: flex;
+align-items: center;
+flex-wrap: wrap;
+gap: 10px;
+margin-top: 18px;
+}
+
+.generate-invoice-btn,
+.view-invoice-btn {
+border: none;
+padding: 10px 17px;
+border-radius: 22px;
+font-size: 13px;
+font-weight: 700;
+cursor: pointer;
+transition: all 0.25s ease;
+}
+
+.generate-invoice-btn {
+background: #2f80c0;
+color: #ffffff;
+}
+
+.generate-invoice-btn:hover {
+background: #123b6d;
+transform: translateY(-2px);
+box-shadow: 0 6px 15px rgba(18, 59, 109, 0.15);
+}
+
+.view-invoice-btn {
+background: #e6f4fb;
+color: #216d9e;
+border: 1px solid #c8e2ef;
+}
+
+.view-invoice-btn:hover {
+background: #d5eaf5;
+transform: translateY(-2px);
+}
+
+/* Payment status badges */
+
+.invoice-status {
+display: inline-block;
+padding: 7px 13px;
+border-radius: 20px;
+font-size: 12px;
+font-weight: 700;
+white-space: nowrap;
+}
+
+.invoice-paid {
+background: #e8f3ed;
+color: #4d8065;
+border: 1px solid #c5dfcf;
+}
+
+.invoice-unpaid {
+background: #fff1e8;
+color: #c26d3d;
+border: 1px solid #f2d2bd;
+}
+
+/* Modal background */
+
+.invoice-modal-overlay {
+position: fixed;
+inset: 0;
+z-index: 10000;
+display: flex;
+align-items: center;
+justify-content: center;
+padding: 20px;
+background: rgba(18, 59, 109, 0.5);
+overflow-y: auto;
+}
+
+/* Invoice modal container */
+
+.invoice-modal {
+width: 100%;
+max-width: 540px;
+max-height: 90vh;
+overflow-y: auto;
+padding: 30px;
+background: #fffdf9;
+border: 1px solid #d9e8ed;
+border-radius: 22px;
+box-shadow: 0 20px 50px rgba(18, 59, 109, 0.2);
+color: #17324d;
+}
+
+.invoice-modal h2 {
+color: #123b6d;
+font-size: 27px;
+font-weight: 800;
+margin-bottom: 8px;
+}
+
+.invoice-modal h3 {
+color: #123b6d;
+font-size: 20px;
+font-weight: 800;
+}
+
+.invoice-modal p {
+color: #61717d;
+line-height: 1.6;
+}
+
+/* Invoice form */
+
+.invoice-modal form {
+display: flex;
+flex-direction: column;
+gap: 8px;
+margin-top: 22px;
+}
+
+.invoice-modal label {
+display: block;
+margin-top: 10px;
+margin-bottom: 3px;
+color: #17324d;
+font-size: 14px;
+font-weight: 700;
+}
+
+.invoice-modal input,
+.invoice-modal select,
+.invoice-modal textarea {
+box-sizing: border-box;
+width: 100%;
+padding: 12px 14px;
+border: 1px solid #cbdde3;
+border-radius: 10px;
+background: #ffffff;
+color: #17324d;
+font-family: inherit;
+font-size: 14px;
+outline: none;
+transition: border-color 0.2s ease, box-shadow 0.2s ease;
+}
+
+.invoice-modal input:focus,
+.invoice-modal select:focus,
+.invoice-modal textarea:focus {
+border-color: #2f80c0;
+box-shadow: 0 0 0 3px rgba(47, 128, 192, 0.12);
+}
+
+.invoice-modal input:disabled,
+.invoice-modal select:disabled {
+background: #f1f5f6;
+cursor: not-allowed;
+}
+
+/* Modal action buttons */
+
+.invoice-modal-actions {
+display: flex;
+flex-wrap: wrap;
+gap: 10px;
+margin-top: 24px;
+}
+
+.invoice-modal-actions button {
+border: none;
+padding: 11px 19px;
+border-radius: 22px;
+font-size: 13px;
+font-weight: 700;
+cursor: pointer;
+transition: all 0.25s ease;
+}
+
+.invoice-modal-actions button:not(.invoice-cancel-btn) {
+background: #2f80c0;
+color: #ffffff;
+}
+
+.invoice-modal-actions button:not(.invoice-cancel-btn):hover {
+background: #123b6d;
+transform: translateY(-2px);
+}
+
+.invoice-modal-actions .invoice-cancel-btn {
+background: #f1e8dc;
+color: #17324d;
+}
+
+.invoice-modal-actions .invoice-cancel-btn:hover {
+background: #e6d8c8;
+}
+
+.invoice-modal-actions button:disabled {
+opacity: 0.6;
+cursor: not-allowed;
+transform: none;
+}
+
+/* Invoice document preview */
+
+.invoice-print-area {
+width: 100%;
+}
+
+.invoice-document {
+padding: 30px;
+background: #ffffff;
+color: #333333;
+border: 1px solid #d9e8ed;
+border-radius: 12px;
+}
+
+.invoice-document h2 {
+color: #123b6d;
+font-size: 30px;
+font-weight: 800;
+margin-bottom: 5px;
+}
+
+.invoice-document h3 {
+color: #123b6d;
+font-size: 19px;
+font-weight: 700;
+margin-top: 22px;
+margin-bottom: 12px;
+}
+
+.invoice-document p {
+color: #555555;
+font-size: 14px;
+line-height: 1.7;
+margin-bottom: 8px;
+overflow-wrap: anywhere;
+}
+
+.invoice-document strong {
+color: #17324d;
+}
+
+.invoice-document hr {
+border: none;
+border-top: 1px solid #dce4e8;
+margin: 20px 0;
+}
+
+.invoice-document .invoice-amount {
+margin-top: 20px;
+padding: 18px;
+background: #e8f1f5;
+border-radius: 10px;
+color: #123b6d;
+font-size: 20px;
+font-weight: 800;
+}
+
+.invoice-document .invoice-note {
+margin-top: 25px;
+padding-top: 15px;
+border-top: 1px solid #dce4e8;
+color: #61717d;
+font-size: 12px;
+line-height: 1.7;
+}
+
+/* Invoice status inside the document */
+
+.invoice-document .invoice-status {
+margin-top: 8px;
+}
+
+/* Responsive invoice layout */
+
+@media (max-width: 600px) {
+.invoice-modal-overlay {
+align-items: flex-start;
+padding: 12px;
+}
+
+.invoice-modal {
+    max-height: 94vh;
+    padding: 22px 18px;
+    border-radius: 17px;
+}
+
+.invoice-modal h2 {
+    font-size: 23px;
+}
+
+.invoice-modal-actions {
+    flex-direction: column;
+}
+
+.invoice-modal-actions button {
+    width: 100%;
+}
+
+.invoice-actions {
+    align-items: stretch;
+}
+
+.generate-invoice-btn,
+.view-invoice-btn {
+    text-align: center;
+}
+
+.invoice-document {
+    padding: 20px 15px;
+}
+
+.invoice-document h2 {
+    font-size: 25px;
+}
+
+.invoice-document .invoice-amount {
+    font-size: 18px;
+}
+
+}
+
+/* ========================================
+PRINT / SAVE INVOICE AS PDF
+======================================== */
+
+@media print {
+@page {
+size: A4;
+margin: 15mm;
+}
+
+body * {
+    visibility: hidden !important;
+}
+
+.invoice-print-area,
+.invoice-print-area * {
+    visibility: visible !important;
+}
+
+.invoice-modal-overlay {
+    position: absolute !important;
+    inset: 0 !important;
+    display: block !important;
+    width: 100% !important;
+    height: auto !important;
+    padding: 0 !important;
+    overflow: visible !important;
+    background: #ffffff !important;
+}
+
+.invoice-modal {
+    width: 100% !important;
+    max-width: none !important;
+    max-height: none !important;
+    overflow: visible !important;
+    padding: 0 !important;
+    border: none !important;
+    border-radius: 0 !important;
+    box-shadow: none !important;
+    background: #ffffff !important;
+}
+
+.invoice-document {
+    width: 100% !important;
+    padding: 0 !important;
+    border: none !important;
+    border-radius: 0 !important;
+    box-shadow: none !important;
+    background: #ffffff !important;
+    color: #000000 !important;
+}
+
+.invoice-document h2,
+.invoice-document h3,
+.invoice-document p,
+.invoice-document strong {
+    color: #000000 !important;
+}
+
+.invoice-document .invoice-amount {
+    color: #000000 !important;
+    background: #eeeeee !important;
+    border: 1px solid #cccccc !important;
+}
+
+.no-print {
+    display: none !important;
+}
+
+}
