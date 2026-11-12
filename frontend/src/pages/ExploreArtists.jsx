@@ -10,7 +10,7 @@ function ExploreArtists(){
     useEffect(() => {
         const fetchArtists = async() =>{
             try{
-                const response = await axios.get("http://localhost:3000/api/artists");
+                const response = await axios.get("https://artconnect-backend-87br.onrender.com/api/artists");
 
                 console.log(response.data.artists);
                 setArtists(response.data.artists);

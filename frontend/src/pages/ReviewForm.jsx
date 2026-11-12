@@ -29,7 +29,7 @@ function Review(){
 
             const token = localStorage.getItem("token");
 
-            const response = await axios.post("http://localhost:3000/api/reviews",
+            const response = await axios.post("https://artconnect-backend-87br.onrender.com/api/reviews",
                 {
                     artistId,
                     rating,

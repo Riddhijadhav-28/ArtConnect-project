@@ -12,7 +12,7 @@ function ClientDashboard(){
             try{
                 const token = localStorage.getItem("token");
 
-                const response= await axios.get("http://localhost:3000/api/dashboard/client",
+                const response= await axios.get("https://artconnect-backend-87br.onrender.com/api/dashboard/client",
                     {
                         headers:{
                             Authorization: `Bearer ${token}`,

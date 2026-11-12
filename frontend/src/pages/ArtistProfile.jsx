@@ -14,13 +14,13 @@ function ArtistProfile() {
     useEffect(() => {
         const fetechArtist = async() => {
             try{
-                const response = await axios.get(`http://localhost:3000/api/artists/${id}`);
+                const response = await axios.get(`https://artconnect-backend-87br.onrender.com/api/artists/${id}`);
                 setArtist(response.data.artist);
 
-                const artworkResponse = await axios.get(`http://localhost:3000/api/artworks/artist/${id}`);
+                const artworkResponse = await axios.get(`https://artconnect-backend-87br.onrender.com/api/artworks/artist/${id}`);
                 setArtworks(artworkResponse.data.artworks);
 
-                const reviewResponse = await axios.get(`http://localhost:3000/api/reviews/${id}`);
+                const reviewResponse = await axios.get(`https://artconnect-backend-87br.onrender.com/api/reviews/${id}`);
                 setReviews(reviewResponse.data.reviews);
 
             }catch(error){

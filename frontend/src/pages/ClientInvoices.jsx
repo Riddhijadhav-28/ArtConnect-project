@@ -20,7 +20,7 @@ const fetchInvoices = async () => {
         const token = localStorage.getItem("token");
 
         const response = await axios.get(
-            "http://localhost:3000/api/invoices/client",
+            "https://artconnect-backend-87br.onrender.com/api/invoices/client",
             {
                 headers: {
                     Authorization: `Bearer ${token}`
@@ -67,7 +67,7 @@ try {
     const token = localStorage.getItem("token");
 
     const response = await axios.patch(
-        `http://localhost:3000/api/invoices/${selectedInvoice._id}/payment-method`,
+        `https://artconnect-backend-87br.onrender.com/api/invoices/${selectedInvoice._id}/payment-method`,
         {
             paymentMethod: selectedPaymentMethod
         },

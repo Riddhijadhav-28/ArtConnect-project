@@ -33,7 +33,7 @@ function UploadArtwork() {
 
         try {
             const token = localStorage.getItem("token");
-            const response = await axios.post("http://localhost:3000/api/artworks",
+            const response = await axios.post("https://artconnect-backend-87br.onrender.com/api/artworks",
                 formData,
                 {
                     headers: {

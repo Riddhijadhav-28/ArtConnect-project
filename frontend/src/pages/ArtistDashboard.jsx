@@ -46,7 +46,7 @@ const [invoiceLoading, setInvoiceLoading] = useState(false);
             const token = localStorage.getItem("token");
 
             const response = await axios.get(
-                "http://localhost:3000/api/dashboard/artist",
+                "https://artconnect-backend-87br.onrender.com/api/dashboard/artist",
                 {
                     headers: {
                         Authorization: `Bearer ${token}`,
@@ -82,7 +82,7 @@ const [invoiceLoading, setInvoiceLoading] = useState(false);
             const token = localStorage.getItem("token");
 
             const artistResponse = await axios.get(
-                "http://localhost:3000/api/artists/me",
+                "https://artconnect-backend-87br.onrender.com/api/artists/me",
                 {
                     headers: {
                         Authorization: `Bearer ${token}`,
@@ -93,7 +93,7 @@ const [invoiceLoading, setInvoiceLoading] = useState(false);
             const artistId = artistResponse.data.artist._id;
 
             const artworkResponse = await axios.get(
-                `http://localhost:3000/api/artworks/artist/${artistId}`
+                `https://artconnect-backend-87br.onrender.com/api/artworks/artist/${artistId}`
             );
 
             setArtworks(
@@ -129,7 +129,7 @@ const fetchInvoices = async () => {
         const token = localStorage.getItem("token");
 
         const response = await axios.get(
-            "http://localhost:3000/api/invoices/artist",
+            "https://artconnect-backend-87br.onrender.com/api/invoices/artist",
             {
                 headers: {
                     Authorization: `Bearer ${token}`
@@ -171,7 +171,7 @@ const fetchInvoices = async () => {
             const token = localStorage.getItem("token");
 
             await axios.put(
-                `http://localhost:3000/api/commissions/${commissionId}/status`,
+                `https://artconnect-backend-87br.onrender.com/api/commissions/${commissionId}/status`,
                 { status },
                 {
                     headers: {
@@ -221,7 +221,7 @@ const fetchInvoices = async () => {
             const token = localStorage.getItem("token");
 
             const response = await axios.put(
-                `http://localhost:3000/api/artworks/${editingArtwork._id}`,
+                `https://artconnect-backend-87br.onrender.com/api/artworks/${editingArtwork._id}`,
                 updatedData,
                 {
                     headers: {
@@ -257,7 +257,7 @@ const fetchInvoices = async () => {
         const token = localStorage.getItem("token");
 
         await axios.delete(
-            `http://localhost:3000/api/artworks/${artworkId}`,
+            `https://artconnect-backend-87br.onrender.com/api/artworks/${artworkId}`,
             {
                 headers: {
                     Authorization: `Bearer ${token}`,
@@ -289,7 +289,7 @@ setErrorMessage("");
     const token = localStorage.getItem("token");
 
     await axios.post(
-        "http://localhost:3000/api/invoices",
+        "https://artconnect-backend-87br.onrender.com/api/invoices",
         {
             commissionId: commission._id,
             amount: Number(invoiceForm.amount),
@@ -338,7 +338,7 @@ const markInvoicePaid = async (invoiceId) => {
         const token = localStorage.getItem("token");
 
         await axios.patch(
-            `http://localhost:3000/api/invoices/${invoiceId}/paid`,
+            `https://artconnect-backend-87br.onrender.com/api/invoices/${invoiceId}/paid`,
             {},
             {
                 headers: {

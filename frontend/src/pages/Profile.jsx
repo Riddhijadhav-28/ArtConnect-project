@@ -13,7 +13,7 @@ function Profile() {
     const fetchProfile = async () => {
         try {
             const token = localStorage.getItem("token");
-            const response = await axios.get("http://localhost:3000/api/auth/profile",
+            const response = await axios.get("https://artconnect-backend-87br.onrender.com/api/auth/profile",
                 {
                     headers: {
                         Authorization: `Bearer ${token}`,
@@ -30,7 +30,7 @@ function Profile() {
     const fetchArtistProfile = async () => {
         try {
             const token = localStorage.getItem("token");
-            const response = await axios.get("http://localhost:3000/api/artists/me",
+            const response = await axios.get("https://artconnect-backend-87br.onrender.com/api/artists/me",
                 {
                     headers: {
                         Authorization: `Bearer ${token}`,

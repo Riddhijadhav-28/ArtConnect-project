@@ -28,7 +28,7 @@ function EditArtistProfile() {
             const token = localStorage.getItem("token");
 
             const response = await axios.get(
-                "http://localhost:3000/api/artists/me",
+                "https://artconnect-backend-87br.onrender.com/api/artists/me",
                 {
                     headers: {
                         Authorization: `Bearer ${token}`,
@@ -84,7 +84,7 @@ function EditArtistProfile() {
                 .filter((genre) => genre !== "");
 
 
-            const response = await axios.put("http://localhost:3000/api/artists/me",
+            const response = await axios.put("https://artconnect-backend-87br.onrender.com/api/artists/me",
                 {
                     artistName,
                     bio,

@@ -34,7 +34,7 @@ function CreateArtistProfile() {
                 .map((genre) => genre.trim())
                 .filter((genre) => genre !== "");
 
-            const response = await axios.post("http://localhost:3000/api/artists/create",
+            const response = await axios.post("https://artconnect-backend-87br.onrender.com/api/artists/create",
                 {
                     artistName,
                     bio,
