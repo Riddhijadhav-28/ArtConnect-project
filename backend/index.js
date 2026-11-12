@@ -17,8 +17,6 @@ import dashboardRoute from "./routes/dashboardRoute.js";
 import invoiceRoute from "./routes/invoiceRoute.js"
 // configDotenv();
 
-connectDB();
-
 const PORT = process.env.PORT || 3000;
 
 const app = express();
@@ -34,7 +32,18 @@ app.use("/api/invoices", invoiceRoute);
 app.use("/api/reviews", reviewRoute);
 app.use("/api/dashboard", dashboardRoute);
 
-app.listen(PORT, () => {
-  console.log(`server is running on port ${PORT}`); 
-});
+const startServer = async () => {
+  try {
+    await connectDB();
 
+    app.listen(PORT, () => {
+      console.log(`Server is running on port ${PORT}`);
+    });
+
+  } catch (error) {
+    console.error("Server startup failed:", error);
+    process.exit(1);
+  }
+};
+
+startServer();
